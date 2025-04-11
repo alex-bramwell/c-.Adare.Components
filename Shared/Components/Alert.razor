@@ -1,0 +1,32 @@
+﻿@code {
+    // Demonstrates how a parent component can supply parameters
+    [Parameter]
+    public string? Title { get; set; }
+}
+<div class="alert @AlertClass">
+    <span class="oi @Icon me-2" aria-hidden="true"></span>
+    <strong>@Title</strong>
+    <span>&nbsp;@Message</span>
+</div>
+
+@code {
+    [Parameter]
+    public string? alertTitle { get; set; }
+
+    [Parameter]
+    public string? Message { get; set; }
+
+    [Parameter]
+    public string? Icon { get; set; }
+
+    [Parameter]
+    public string AlertType { get; set; } = "info"; // Default to info
+
+    private string AlertClass => AlertType switch
+    {
+        "error" => "alert-error",
+        "warning" => "alert-warning",
+        "success" => "alert-success",
+        _ => "alert-secondary"
+    };
+}

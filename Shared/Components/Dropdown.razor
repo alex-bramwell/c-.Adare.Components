@@ -1,0 +1,194 @@
+﻿@implements IAsyncDisposable
+
+<div class="row">
+    <div class="col-lg-6 col-md-8 col-sm-12">
+        <h3 class="margin-top-6">@selectClientTitle</h3>
+
+        @if (!selectedValues.Any() && ShowSelectedPills)
+        {
+            <Alert Title="No client selected." Message="Please select a client from the dropdown." Icon="oi-warning" AlertType="warning" />
+        }
+
+        <p>@selectClientDescription</p>
+
+        <input type="text"
+               id="dropdownInput-@uniqueId"
+               @onclick="ToggleDropdown"
+               readonly
+               class="form-control"
+               placeholder="Please select a client"
+               value="@string.Join(", ", selectedValues)" />
+
+        <div id="dropdownMenu-@uniqueId" class="dropdown-menu @dropdownClass">
+            @foreach (var item in Items)
+            {
+                <a class="dropdown-item" href="#" @onclick="() => SelectItem(item)" @onclick:preventDefault>@item</a>
+            }
+        </div>
+
+        @if (ShowSelectedPills)
+        {
+            <div class="selected-pills mt-2">
+                @foreach (var selectedItem in selectedValues)
+                {
+                    <span class="badge bg-secondary me-1 p-2 d-inline-flex align-items-center">
+                        <span class="me-2">@selectedItem</span>
+                        <button type="button"
+                                class="btn-close btn-close-white"
+                                aria-label="Remove @selectedItem"
+                                @onclick="() => DeselectItem(selectedItem)">
+                        </button>
+                    </span>
+                }
+            </div>
+        }
+
+    </div>
+</div>
+
+
+@code {
+    [Inject]
+    private HttpClient Http { get; set; } = null!;
+
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; } = null!;
+
+    [Parameter]
+    public List<string> Items { get; set; } = new List<string>();
+
+    [Parameter]
+    public bool ShowSelectedPills { get; set; } = false;
+
+    private List<string> selectedValues = new List<string>();
+    private string dropdownClass = "d-none";
+    private string selectClientTitle { get; set; } = "Select Client";
+    private string selectClientDescription { get; set; } = "";
+
+    private DotNetObjectReference<Dropdown> objRef = null!;
+
+    private readonly string uniqueId = Guid.NewGuid().ToString("N");
+    private string DropdownMenuId => $"dropdownMenu-{uniqueId}";
+    private string DropdownInputId => $"dropdownInput-{uniqueId}";
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        objRef = DotNetObjectReference.Create(this);
+
+        if (Items == null || !Items.Any())
+        {
+            try
+            {
+                var json = await Http.GetStringAsync("sample-data/clients.json");
+                var clients = System.Text.Json.JsonSerializer.Deserialize<List<Client>>(json, new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                if (clients != null && clients.Any())
+                {
+                    Items = clients.Select(c => c.companyName).Where(name => !string.IsNullOrEmpty(name)).ToList();
+                    var firstClient = clients.FirstOrDefault();
+                    if (firstClient != null)
+                    {
+                        selectClientTitle = firstClient.selectClientTitle ?? "Select Client";
+                        selectClientDescription = firstClient.selectClientDescription ?? "";
+                    }
+                }
+                else
+                {
+                    selectClientTitle = "No Clients Found";
+                    selectClientDescription = "No client data was available to load.";
+                    Items = new List<string>();
+                }
+            }
+            catch (System.Net.Http.HttpRequestException ex)
+            {
+                Console.Error.WriteLine($"Error fetching client data: {ex.Message}");
+                selectClientTitle = "Network Error";
+                selectClientDescription = "Could not fetch client data. Please check the network connection and file path.";
+                Items = new List<string>();
+            }
+            catch (System.Text.Json.JsonException ex)
+            {
+                Console.Error.WriteLine($"Error parsing client data: {ex.Message}");
+                selectClientTitle = "Data Error";
+                selectClientDescription = "Could not read client data due to format errors.";
+                Items = new List<string>();
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error loading client data: {ex.Message}");
+                selectClientTitle = "Error";
+                selectClientDescription = "An unexpected error occurred while loading client data.";
+                Items = new List<string>();
+            }
+        }
+        Items ??= new List<string>();
+    }
+
+    private async Task ToggleDropdown()
+    {
+        if (dropdownClass == "d-none")
+        {
+            dropdownClass = "d-block";
+            if (JSRuntime != null)
+                await JSRuntime.InvokeVoidAsync("blazorHelpers.registerClickOutside", objRef, DropdownMenuId);
+        }
+        else
+        {
+            dropdownClass = "d-none";
+            if (JSRuntime != null)
+                await JSRuntime.InvokeVoidAsync("blazorHelpers.unregisterClickOutside", DropdownMenuId);
+        }
+    }
+
+    private async Task SelectItem(string item)
+    {
+        selectedValues.Clear();
+        selectedValues.Add(item);
+        dropdownClass = "d-none";
+        if (JSRuntime != null)
+            await JSRuntime.InvokeVoidAsync("blazorHelpers.unregisterClickOutside", DropdownMenuId);
+        StateHasChanged();
+    }
+
+    private void DeselectItem(string item)
+    {
+        selectedValues.Remove(item);
+        StateHasChanged();
+    }
+
+    [JSInvokable]
+    public async Task CloseDropdown()
+    {
+        if (dropdownClass == "d-block")
+        {
+            dropdownClass = "d-none";
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (dropdownClass == "d-block")
+        {
+            try
+            {
+                if (JSRuntime != null)
+                    await JSRuntime.InvokeVoidAsync("blazorHelpers.unregisterClickOutside", DropdownMenuId);
+            }
+            catch (InvalidOperationException) { }
+            catch (JSDisconnectedException) { }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error during JS interop dispose: {ex.Message}");
+            }
+        }
+        objRef?.Dispose();
+    }
+
+    public class Client
+    {
+        public string companyName { get; set; } = null!;
+        public string selectClientTitle { get; set; } = null!;
+        public string selectClientDescription { get; set; } = null!;
+    }
+}

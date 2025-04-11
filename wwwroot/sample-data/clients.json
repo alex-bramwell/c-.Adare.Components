@@ -1,0 +1,42 @@
+[
+  {
+    "selectClientTitle": "Select a client",
+    "selectClientDescription": "Select a client by using the dropdown menu below. You can only select one client at a time. Each client may have different applications."
+  },
+  
+  {
+    "companyName": "Tech Innovators Inc.",
+    "address": "1234 Innovation Drive, Tech City, TC 56789",
+    "contactPerson": "John Doe",
+    "email": "john.doe@techinnovators.com",
+    "phone": "+1-800-555-1234"
+  },
+  {
+    "companyName": "Green Solutions Ltd.",
+    "address": "5678 Greenway Blvd, Eco Town, ET 12345",
+    "contactPerson": "Jane Smith",
+    "email": "jane.smith@greensolutions.com",
+    "phone": "+1-800-555-5678"
+  },
+  {
+    "companyName": "Future Enterprises",
+    "address": "9101 Future Lane, Tomorrow City, TC 67890",
+    "contactPerson": "Alice Johnson",
+    "email": "alice.johnson@futureenterprises.com",
+    "phone": "+1-800-555-9101"
+  },
+  {
+    "companyName": "Global Ventures",
+    "address": "2345 Global Street, World City, WC 23456",
+    "contactPerson": "Bob Brown",
+    "email": "bob.brown@globalventures.com",
+    "phone": "+1-800-555-2345"
+  },
+  {
+    "companyName": "Creative Minds Co.",
+    "address": "6789 Creative Ave, Imagination Town, IT 34567",
+    "contactPerson": "Carol White",
+    "email": "carol.white@creativeminds.com",
+    "phone": "+1-800-555-6789"
+  }
+]

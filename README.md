@@ -1,1 +1,1 @@
-# c-.Adare.Components
+# Blazor.SmartHub

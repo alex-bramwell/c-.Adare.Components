@@ -1,0 +1,54 @@
+/* Base styles for all buttons */
+.button {
+    border: none; /* Remove any border */
+    padding: var(--padding-2) var(--padding-4); /* Add padding inside the button */
+    border-radius: var(--border-radius-4); /* Round the corners of the button */
+    cursor: pointer; /* Change the cursor to a pointer when hovering over the button */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color changes */
+    font-family: 'axiforma-medium', sans-serif; /* Apply the custom font */
+}
+
+/* Styles for the primary button */
+.b-primary {
+    background-color: var(--ad-blue); /* Set the background color to blue */
+    color: var(--ad-white); /* Set the text color to white */
+}
+
+    .b-primary:hover {
+        background-color: var(--ad-dark-blue); /* Change the background color to a darker blue */
+    }
+
+    .b-primary:active {
+        background-color: var(--ad-darker-blue); /* Change the background color to an even darker blue */
+    }
+
+/* Styles for the secondary button */
+.b-secondary {
+    background-color: var(--ad-green); /* Set the background color to green */
+    color: var(--ad-white); /* Set the text color to white */
+}
+
+    .b-secondary:hover {
+        background-color: var(--ad-dark-green); /* Change the background color to a darker green */
+    }
+
+    .b-secondary:active {
+        background-color: var(--ad-darker-green); /* Change the background color to an even darker green */
+    }
+
+/* Styles for the outline button */
+.b-outline {
+    background-color: transparent; /* Set the background color to transparent */
+    color: var(--ad-white); /* Set the text color to white */
+    border: 2px solid var(--ad-white); /* Add a white border */
+}
+
+    .b-outline:hover {
+        background-color: var(--ad-white-25); /* Change the background color to a semi-transparent white */
+        color: var(--ad-dark-green); /* Change the text color to dark green */
+    }
+
+    .b-outline:active {
+        background-color: var(--ad-white-50); /* Change the background color to a more opaque white */
+        color: var(--ad-darker-green); /* Change the text color to an even darker green */
+    }

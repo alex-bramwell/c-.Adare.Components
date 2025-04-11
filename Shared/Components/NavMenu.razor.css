@@ -1,0 +1,1022 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: var(--ad-dark-green);
+    padding: var(--padding-4);
+}
+
+.navbar .hamburger-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--height-8); /* Set consistent height */
+}
+
+.navbar .hamburger-button .hamburger-icon {
+    width: var(--width-8); 
+    height: var(--height-1); 
+    background-color: var(--ad-white);
+    position: relative;
+    display: inline-block;
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
+}
+
+.navbar .hamburger-button .hamburger-icon::before,
+.navbar .hamburger-button .hamburger-icon::after {
+    content: '';
+    width: var(--width-8); 
+    height: var(--height-1); 
+    background-color: var(--ad-white);
+    position: absolute;
+    left: 0;
+    transition: transform 0.1s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.navbar .hamburger-button .hamburger-icon::before {
+    top: -8px;
+}
+
+.navbar .hamburger-button .hamburger-icon::after {
+    top: 8px;
+}
+
+.navbar .hamburger-button:active .hamburger-icon {
+    transform: rotate(05deg);
+}
+
+.navbar .hamburger-button:active .hamburger-icon::before,
+.navbar .hamburger-button:active .hamburger-icon::after {
+    transform: rotate(05deg);
+}
+
+.navbar .navbar-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: var(--ad-dark-green);
+    padding: var(--padding-4);
+}
+
+.navbar .hamburger-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--height-8); /* Set consistent height */
+}
+
+.navbar .hamburger-button .hamburger-icon {
+    width: var(--width-8); 
+    height: var(--height-1); 
+    background-color: var(--ad-white);
+    position: relative;
+    display: inline-block;
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
+}
+
+.navbar .hamburger-button .hamburger-icon::before,
+.navbar .hamburger-button .hamburger-icon::after {
+    content: '';
+    width: var(--width-8); 
+    height: var(--height-1); 
+    background-color: var(--ad-white);
+    position: absolute;
+    left: 0;
+    transition: transform 0.1s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.navbar .hamburger-button .hamburger-icon::before {
+    top: -8px;
+}
+
+.navbar .hamburger-button .hamburger-icon::after {
+    top: 8px;
+}
+
+.navbar .hamburger-button:active .hamburger-icon {
+    transform: rotate(05deg);
+}
+
+.navbar .hamburger-button:active .hamburger-icon::before,
+.navbar .hamburger-button:active .hamburger-icon::after {
+    transform: rotate(05deg);
+}
+
+.navbar .navbar-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: translateX(-100%);
+    }
+    20% {
+        transform: translateX(30px);
+    }
+    40% {
+        transform: translateX(-10px);
+    }
+    60% {
+        transform: translateX(20px);
+    }
+    80% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--width-100);
+    height: 100%;
+    overflow-x: hidden;
+    transition: transform 0.3s;
+    transform: translateX(-100%);
+    z-index: 1000; /* Ensure the sidebar is on top */
+    backdrop-filter: blur(5px); /* Blur effect */
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3); /* Inset shadow for inside border effect */
+    box-shadow: inset 0 0 0 1px var(--ad-green-50);
+    border-right: 1px solid var(--ad-green-50);
+}
+
+.sidebar.open {
+    animation: bounceIn 1.5s cubic-bezier(0.25, 1, 0.5, 1); /* Adjusted easing function */
+    transform: translateX(0);
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.sidebar .sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--padding-4);
+}
+
+.sidebar .close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--height-8); /* Set consistent height */
+}
+
+.sidebar .close-button .close-icon {
+    width: var(--width-8);
+    height: var(--height-1); /* closest to 3px */
+    background-color: var(--ad-white);
+    position: relative;
+    display: inline-block;
+    transform: rotate(45deg);
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before,
+.sidebar .close-button .close-icon::after {
+    content: '';
+    width: var(--width-8); 
+    height: var(--height-1); 
+    background-color: var(--ad-white);
+    position: absolute;
+    left: 0;
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button .close-icon::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button:active .close-icon {
+    transform: rotate(135deg);
+}
+
+.sidebar .close-button:active .close-icon::before,
+.sidebar .close-button:active .close-icon::after {
+    transform: rotate(135deg);
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-4);
+    background-color: var(--ad-dark-green);
+    border-bottom: 1px solid var(--ad-green-50);
+    border-right: 1px solid var(--ad-green-50); /* Add right border */
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(50px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--width-100);
+    height: 100%;
+    overflow-x: hidden;
+    transition: transform 0.3s;
+    transform: translateX(-100%);
+    z-index: 1000; /* Ensure the sidebar is on top */
+    backdrop-filter: blur(5px); /* Blur effect */
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3); /* Inset shadow for inside border effect */
+    box-shadow: inset 0 0 0 1px var(--ad-green-50);
+    border-right: 1px solid var(--ad-green-50);
+}
+
+.sidebar.open {
+    animation: bounceIn 1.5s cubic-bezier(0.25, 1, 0.5, 1); /* Adjusted easing function */
+    transform: translateX(0);
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.sidebar .sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--padding-4);
+}
+
+.sidebar .close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--height-8); /* Set consistent height */
+}
+
+.sidebar .close-button .close-icon {
+    width: var(--width-8);
+    height: var(--height-1); /* closest to 3px */
+    background-color: var(--ad-white);
+    position: relative;
+    display: inline-block;
+    transform: rotate(45deg);
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before,
+.sidebar .close-button .close-icon::after {
+    content: '';
+    width: var(--width-8); 
+    height: var(--height-1); 
+    background-color: var(--ad-white);
+    position: absolute;
+    left: 0;
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button .close-icon::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button:active .close-icon {
+    transform: rotate(135deg);
+}
+
+.sidebar .close-button:active .close-icon::before,
+.sidebar .close-button:active .close-icon::after {
+    transform: rotate(135deg);
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-4);
+    background-color: var(--ad-dark-green);
+    border-bottom: 1px solid var(--ad-green-50);
+    border-right: 1px solid var(--ad-green-50); /* Add right border */
+}
+
+.sidebar.open {
+    animation: bounceIn 1.5s cubic-bezier(0.25, 1, 0.5, 1); /* Adjusted easing function */
+    transform: translateX(0);
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.sidebar .sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--padding-4);
+}
+
+.sidebar .close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--height-8); /* Set consistent height */
+}
+
+.sidebar .close-button .close-icon {
+    width: var(--width-8);
+    height: var(--height-1); /* closest to 3px */
+    background-color: var(--ad-white);
+    position: relative;
+    display: inline-block;
+    transform: rotate(45deg);
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before,
+.sidebar .close-button .close-icon::after {
+    content: '';
+    width: var(--width-8); 
+    height: var(--height-1); 
+    background-color: var(--ad-white);
+    position: absolute;
+    left: 0;
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button .close-icon::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button:active .close-icon {
+    transform: rotate(135deg);
+}
+
+.sidebar .close-button:active .close-icon::before,
+.sidebar .close-button:active .close-icon::after {
+    transform: rotate(135deg);
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-4);
+    background-color: var(--ad-dark-green);
+    border-bottom: 1px solid var(--ad-green-50);
+    border-right: 1px solid var(--ad-green-50); /* Add right border */
+}
+
+    .sidebar.open {
+        @keyframes bounceIn {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            50% {
+                transform: translateX(50px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+    }
+
+    .sidebar.open {
+        animation: bounceIn 0.2s cubic-bezier(0.1, 0, 0.5, 0.5); /* Custom easing function */
+        transform: translateX(0);
+    }
+
+    .sidebar.closed {
+        transform: translateX(-100%);
+    }
+
+    .sidebar .sidebar-buttons {
+        display: flex;
+        flex-direction: column;
+        padding: 0 var(--padding-4);
+    }
+
+    .sidebar .close-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: var(--height-8); /* Set consistent height */
+    }
+
+    .sidebar .close-button .close-icon {
+        width: var(--width-8);
+        height: var(--height-1); /* closest to 3px */
+        background-color: var(--ad-white);
+        position: relative;
+        display: inline-block;
+        transform: rotate(45deg);
+        transition: transform 0.5s ease-in-out; /* Smooth transition */
+        border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+    }
+
+    .sidebar .close-button .close-icon::before,
+    .sidebar .close-button .close-icon::after {
+        content: '';
+        width: var(--width-8); 
+        height: var(--height-1); 
+        background-color: var(--ad-white);
+        position: absolute;
+        left: 0;
+        transition: transform 0.2s ease-in-out; /* Smooth transition */
+        border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+    }
+
+    .sidebar .close-button .close-icon::before {
+        top: 0;
+        transform: rotate(90deg);
+    }
+
+    .sidebar .close-button .close-icon::after {
+        top: 0;
+        transform: rotate(90deg);
+    }
+
+    .sidebar .close-button:active .close-icon {
+        transform: rotate(135deg);
+    }
+
+    .sidebar .close-button:active .close-icon::before,
+    .sidebar .close-button:active .close-icon::after {
+        transform: rotate(135deg);
+    }
+
+    .icon {
+        font-size: 1.5rem;
+    }
+
+    .sidebar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--padding-4);
+        background-color: var(--ad-dark-green);
+        border-bottom: 1px solid var(--ad-green-50);
+        border-right: 1px solid var(--ad-green-50); /* Add right border */
+    }
+    transform: translateX(0);
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.sidebar .sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--padding-4);
+}
+
+.sidebar .close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--height-8); /* Set consistent height */
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--width-100);
+    height: 100%;
+    overflow-x: hidden;
+    transition: transform 0.3s;
+    transform: translateX(-100%);
+    z-index: 1000; /* Ensure the sidebar is on top */
+    backdrop-filter: blur(5px); /* Blur effect */
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3); /* Inset shadow for inside border effect */
+    box-shadow: inset 0 0 0 1px var(--ad-green-50);
+    border-right: 1px solid var(--ad-green-50);
+}
+
+.sidebar.open {
+    animation: bounceIn 1.5s; /* Increase the duration to 1.5s */
+    transform: translateX(0);
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.sidebar .sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--padding-4);
+}
+
+.sidebar .close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--height-8); /* Set consistent height */
+}
+
+.sidebar .close-button .close-icon {
+    width: var(--width-8);
+    height: var(--height-1); /* closest to 3px */
+    background-color: var(--ad-white);
+    position: relative;
+    display: inline-block;
+    transform: rotate(45deg);
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before,
+.sidebar .close-button .close-icon::after {
+    content: '';
+    width: var(--width-8); 
+    height: var(--height-1); 
+    background-color: var(--ad-white);
+    position: absolute;
+    left: 0;
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button .close-icon::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button:active .close-icon {
+    transform: rotate(135deg);
+}
+
+.sidebar .close-button:active .close-icon::before,
+.sidebar .close-button:active .close-icon::after {
+    transform: rotate(135deg);
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-4);
+    background-color: var(--ad-dark-green);
+    border-bottom: 1px solid var(--ad-green-50);
+    border-right: 1px solid var(--ad-green-50); /* Add right border */
+}
+
+.sidebar.open {
+    animation: bounceIn 1s;
+    transform: translateX(0);
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.sidebar .sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--padding-4);
+}
+
+.sidebar .close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--height-8); /* Set consistent height */
+}
+
+.sidebar .close-button .close-icon {
+    width: var(--width-8);
+    height: var(--height-1); /* closest to 3px */
+    background-color: var(--ad-white);
+    position: relative;
+    display: inline-block;
+    transform: rotate(45deg);
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before,
+.sidebar .close-button .close-icon::after {
+    content: '';
+    width: var(--width-8); 
+    height: var(--height-1); 
+    background-color: var(--ad-white);
+    position: absolute;
+    left: 0;
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button .close-icon::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button:active .close-icon {
+    transform: rotate(135deg);
+}
+
+.sidebar .close-button:active .close-icon::before,
+.sidebar .close-button:active .close-icon::after {
+    transform: rotate(135deg);
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-4);
+    background-color: var(--ad-dark-green);
+    border-bottom: 1px solid var(--ad-green-50);
+    border-right: 1px solid var(--ad-green-50); /* Add right border */
+}
+
+.sidebar.open {
+    animation: bounceIn 0.5s;
+    transform: translateX(0);
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.sidebar .sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--padding-4);
+}
+
+.sidebar .close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--height-8); /* Set consistent height */
+}
+
+.sidebar .close-button .close-icon {
+    width: var(--width-8);
+    height: var(--height-1); /* closest to 3px */
+    background-color: var(--ad-white);
+    position: relative;
+    display: inline-block;
+    transform: rotate(45deg);
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before,
+.sidebar .close-button .close-icon::after {
+    content: '';
+    width: var(--width-8); 
+    height: var(--height-1); 
+    background-color: var(--ad-white);
+    position: absolute;
+    left: 0;
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button .close-icon::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button:active .close-icon {
+    transform: rotate(135deg);
+}
+
+.sidebar .close-button:active .close-icon::before,
+.sidebar .close-button:active .close-icon::after {
+    transform: rotate(135deg);
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-4);
+    background-color: var(--ad-dark-green);
+    border-bottom: 1px solid var(--ad-green-50);
+    border-right: 1px solid var(--ad-green-50); /* Add right border */
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--width-100);
+    height: 100%;
+    overflow-x: hidden;
+    transition: transform 0.3s;
+    transform: translateX(-100%);
+    z-index: 1000; /* Ensure the sidebar is on top */
+    backdrop-filter: blur(5px); /* Blur effect */
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3); /* Inset shadow for inside border effect */
+    box-shadow: inset 0 0 0 1px var(--ad-green-50);
+    border-right: 1px solid var(--ad-green-50);
+}
+
+.sidebar.open {
+    animation: bounceIn 1.5s; /* Increase the duration to 1.5s */
+    transform: translateX(0);
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.sidebar .sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--padding-4);
+}
+
+.sidebar .close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--height-8); /* Set consistent height */
+}
+
+.sidebar .close-button .close-icon {
+    width: var(--width-8);
+    height: var(--height-1); /* closest to 3px */
+    background-color: var(--ad-white);
+    position: relative;
+    display: inline-block;
+    transform: rotate(45deg);
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before,
+.sidebar .close-button .close-icon::after {
+    content: '';
+    width: var(--width-8); 
+    height: var(--height-1); 
+    background-color: var(--ad-white);
+    position: absolute;
+    left: 0;
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button .close-icon::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button:active .close-icon {
+    transform: rotate(135deg);
+}
+
+.sidebar .close-button:active .close-icon::before,
+.sidebar .close-button:active .close-icon::after {
+    transform: rotate(135deg);
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-4);
+    background-color: var(--ad-dark-green);
+    border-bottom: 1px solid var(--ad-green-50);
+    border-right: 1px solid var(--ad-green-50); /* Add right border */
+}
+
+.sidebar.open {
+    animation: bounceIn 0.7s; 
+    transform: translateX(0);
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.sidebar .sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--padding-4);
+}
+
+.sidebar .close-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--height-8); /* Set consistent height */
+}
+
+.sidebar .close-button .close-icon {
+    width: var(--width-8);
+    height: var(--height-1); /* closest to 3px */
+    background-color: var(--ad-white);
+    position: relative;
+    display: inline-block;
+    transform: rotate(45deg);
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before,
+.sidebar .close-button .close-icon::after {
+    content: '';
+    width: var(--width-8); 
+    height: var(--height-1); 
+    background-color: var(--ad-white);
+    position: absolute;
+    left: 0;
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+    border-radius: var(--border-radius-4); /* Add border-radius for rounded corners */
+}
+
+.sidebar .close-button .close-icon::before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button .close-icon::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button:active .close-icon {
+    transform: rotate(135deg);
+}
+
+.sidebar .close-button:active .close-icon::before,
+.sidebar .close-button:active .close-icon::after {
+    transform: rotate(135deg);
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-4);
+    background-color: var(--ad-dark-green);
+    border-bottom: 1px solid var(--ad-green-50);
+    border-right: 1px solid var(--ad-green-50); /* Add right border */
+}
+
+.sidebar .close-button .close-icon::before {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button .close-icon::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar .close-button:active .close-icon {
+    transform: rotate(03deg);
+}
+
+.sidebar .close-button:active .close-icon::before,
+.sidebar .close-button:active .close-icon::after {
+    transform: rotate(03deg);
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-4);
+    background-color: var(--ad-dark-green);
+    border-bottom: 1px solid var(--ad-green-50);
+    border-right: 1px solid var(--ad-green-50); /* Add right border */
+}

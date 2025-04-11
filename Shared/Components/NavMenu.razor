@@ -1,0 +1,55 @@
+﻿@page "/navmenu"
+
+<!-- This is the navigation bar at the top of the page -->
+<div class="navbar">
+    <div class="navbar-content text-white container">
+        <!-- Display the name of the app -->
+        <span class="axiforma-heading d-flex align-items-center">@GetProjectName()</span>
+        <!-- Button to toggle the sidebar -->
+        <button @onclick="ToggleSidebar" class="hamburger-button">
+            <span class="hamburger-icon"></span>
+        </button>
+    </div>
+</div>
+
+<!-- This is the sidebar menu -->
+<div class="sidebar bg-ad-dark-green-gradient @(isSidebarOpen ? "open" : "closed")">
+    <div class="sidebar-header axiforma-heading ">
+        <!-- Display the menu title -->
+        <span class="m-0 text-white">Menu</span>
+        <!-- Button to close the sidebar -->
+        <button @onclick="ToggleSidebar" class="close-button">
+            <span class="close-icon"></span>
+        </button>
+    </div>
+    <!-- List of buttons in the sidebar -->
+    <ul class="sidebar-buttons margin-top-4">
+        <!-- Button that navigates to the home page -->
+        <Button Url="/" Text="Client Selection" ButtonStyle="button b-primary" OnButtonClick="ToggleSidebar" />
+        <!-- Button that navigates to the counter page -->
+        <Button Url="/counter" Text="Secondary Button" ButtonStyle="button b-secondary" OnButtonClick="ToggleSidebar" />
+        <!-- Button that navigates to the fetch data page -->
+        <Button Url="/fetchdata" Text="Outline Button" ButtonStyle="button b-outline" OnButtonClick="ToggleSidebar" />
+    </ul>
+</div>
+
+@code {
+    // Boolean variable to track if the sidebar is open or closed
+    private bool isSidebarOpen = false;
+
+    // Inject the NavigationManager to get the current URL
+    [Inject]
+    private NavigationManager? NavigationManager { get; set; }
+
+    // Method to toggle the sidebar open or closed
+    private void ToggleSidebar()
+    {
+        isSidebarOpen = !isSidebarOpen;
+    }
+
+    // Method to get the project name
+    private string GetProjectName()
+    {
+        return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name ?? "Unknown Project";
+    }
+}

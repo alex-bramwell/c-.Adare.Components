@@ -1,0 +1,83 @@
+﻿input.form-control { /* Styles the input */
+    background-color: var(--ad-white);
+    border: 1px solid var(--ad-dark-green-50);
+    border-radius: var(--border-radius-4);
+    padding: var(--padding-2);
+    color: var(--ad-dark-green);
+    font-size: 1rem;
+    box-shadow: 0 2px 4px var(--ad-green-50);
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+    input.form-control:focus { /* Styles the input when focused */
+        border-color: var(--ad-green);
+        box-shadow: 0 0 8px var(--ad-green);
+        outline: none;
+    }
+
+.dropdown-menu { /* Styles the dropdown container */
+    /* display: none; <--- MAKE SURE THIS LINE IS REMOVED OR COMMENTED OUT */
+    position: absolute;
+    margin-top: var(--margin-1);
+    background-color: var(--ad-white);
+    border: 1px solid var(--ad-green-50);
+    border-radius: var(--border-radius-2);
+    box-shadow: 0 2px 4px var(--ad-dark-green-50);
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+    /* Add custom scrollbar styles if desired */
+}
+
+    /* Custom scrollbar styles for the dropdown menu */
+    /* Works in WebKit browsers (Chrome, Safari, Edge) */
+    .dropdown-menu::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    .dropdown-menu::-webkit-scrollbar-track {
+        background: var(--ad-green-50);
+        border-radius: var(--border-radius-4);
+        border: 3px solid var(--ad-white);
+    }
+
+    .dropdown-menu::-webkit-scrollbar-thumb {
+        background-color: var(--ad-dark-green-50);
+        border-radius: var(--border-radius-4);
+        border: 3px solid var(--ad-white);
+    }
+
+        .dropdown-menu::-webkit-scrollbar-thumb:hover {
+            background-color: var(--ad-dark-green-50);
+        }
+
+
+.dropdown-item { /* Styles the items within the dropdown */
+    padding: var(--padding-2);
+    color: var(--ad-dark-green);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+}
+
+    .dropdown-item:hover { /* Styles items on hover */
+        background-color: var(--ad-green-50);
+        color: var(--ad-dark-green);
+    }
+
+/* Keep .selected-pills rule if using Bootstrap pills and want custom margin */
+.selected-pills {
+    margin-top: var(--margin-2);
+}
+
+/* Rules for .pill and .pill .button-close can remain commented out */
+/*
+.pill { ... }
+.pill .button-close { ... }
+.pill .button-close::before, .pill .button-close::after { ... }
+.pill .button-close::after { ... }
+*/

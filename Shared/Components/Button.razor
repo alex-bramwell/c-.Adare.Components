@@ -1,0 +1,52 @@
+<!-- This is a button component that can be styled and have an icon and text. -->
+<button @onclick="OnClick" class="@ButtonStyle border-radius-4 margin-bottom-3">
+    <!-- If an icon is provided, display it inside a span element. -->
+    @if (Icon != null)
+    {
+        <span class="icon">@Icon</span>
+    }
+    <!-- Display the text of the button. -->
+    @Text
+</button>
+
+@code {
+    // The URL to navigate to when the button is clicked.
+    [Parameter]
+    public string? Url { get; set; }
+
+    // The text to display on the button.
+    [Parameter]
+    public string? Text { get; set; }
+
+    // The icon to display on the button, if any.
+    [Parameter]
+    public RenderFragment? Icon { get; set; }
+
+    // The CSS class to apply to the button for styling.
+    [Parameter]
+    public string ButtonStyle { get; set; } = "b-secondary";
+
+    // A callback that gets triggered when the button is clicked.
+    [Parameter]
+    public EventCallback OnButtonClick { get; set; }
+
+    // Service to handle navigation within the application.
+    [Inject]
+    private NavigationManager? NavigationManager { get; set; }
+
+    // Method to handle the button click event.
+    private async Task OnClick()
+    {
+        // If a callback is provided, invoke it.
+        if (OnButtonClick.HasDelegate)
+        {
+            await OnButtonClick.InvokeAsync(null);
+        }
+
+        // If a URL is provided, navigate to that URL.
+        if (!string.IsNullOrEmpty(Url))
+        {
+            NavigationManager?.NavigateTo(Url);
+        }
+    }
+}
